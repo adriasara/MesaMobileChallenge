@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  MesaNewsApp
+
+  Created by Ádria Cardoso on 23/03/21.
+  
+*/
+
+// LogIn
+
+"login" = "Log in";
+"email" = "E-mail";
+"password" = "Password";
+"create_account" = "Create account";
+
+// Register
+
+"name" = "Name";
+"confirm_password" = "Confirm password";
+"register" = "Register";
