@@ -135,7 +135,7 @@ class ServerAPI {
         
         dataRequest = alamofireManager.request(url.isEmpty ? (Server.urlBase + operation.rawValue.url): url, method: operation.rawValue.method, parameters: p, encoding: urlEncoding, headers: headers).validate().responseJSON { (response) in
             
-            debugRequest(method: operation.rawValue.method.rawValue, url: url.isEmpty ? (Server.urlBase + operation.rawValue.url): url, jsonS: p.prettyPrint(), error: response.error?.localizedDescription, jsonR: response.response?.debugDescription ?? "")// result.debugDescription)
+            debugRequest(method: operation.rawValue.method.rawValue, url: url.isEmpty ? (Server.urlBase + operation.rawValue.url): url, jsonS: p.prettyPrint(), error: response.error.debugDescription, jsonR: response.response?.debugDescription ?? "")// result.debugDescription)
             
             if response.response?.statusCode == 200 || response.response?.statusCode == 201 {
                 if let data = response.data, !data.isEmpty {
@@ -160,7 +160,7 @@ class ServerAPI {
                 if let server_response = try? JSONDecoder().decode(Server_Response.self, from: response.data ?? Data()) {
                     completion?(server_response)
                 } else {
-                    completion?(response.error ?? "cant_connect_to_the_server".localized())
+                    completion?(response.error ?? "Error")
                 }
             }
         }

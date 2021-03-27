@@ -37,10 +37,28 @@ extension Dictionary {
 
 extension NSObject {
 
-    func service<T: Codable>(controller: UIViewController, operation: Server, parameters: Parameters? = nil, type: T.Type, completion: @escaping (Any) -> Void) {
+    func service<T: Codable>(loading: Bool = true, controller: UIViewController, operation: Server, parameters: Parameters? = nil, type: T.Type, completion: @escaping (Any) -> Void) {
         
-        ServerAPI.request(operation: operation, parameters: parameters, type: type) { (response) in
-            completion(response)
+        if loading {
+            
+            let loadController = LoadBarVC()
+            
+            loadController.modalTransitionStyle = .crossDissolve
+            loadController.modalPresentationStyle = .overCurrentContext
+            
+            controller.present(loadController, animated: true) {
+                ServerAPI.request(operation: operation, parameters: parameters, type: type) { (response) in
+                    
+                    loadController.dismiss(animated: loading) {
+                        completion(response)
+                    }
+                }
+            }
+        } else {
+            
+            ServerAPI.request(operation: operation, parameters: parameters, type: type) { (response) in
+                completion(response)
+            }
         }
     }
 }
@@ -72,7 +90,7 @@ extension UIViewController {
         MDCSnackbarManager.setPresentationHostView(view.superview ?? view)
         
         let message: MDCSnackbarMessage = {
-            let m = MDCSnackbarMessage(text: text.localized())
+            let m = MDCSnackbarMessage(text: text)
             m.duration = MDCSnackbarMessageDurationMax
             m.automaticallyDismisses = isAutomaticallyDismisses
             

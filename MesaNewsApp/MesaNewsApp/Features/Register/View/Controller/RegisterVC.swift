@@ -38,7 +38,9 @@ extension RegisterVC: RegisterDelegate {
             if let e = response as? NSError {
                 self.setSnackBarText(e.localizedDescription)
             } else if let server_response = response as? Server_Response {
-                self.setSnackBarText(server_response.mssg ?? "Error")
+                if let mssg = server_response.mssg {
+                    self.setSnackBarText(mssg)
+                }
             } else {
                 if let jResult = response as? RegisterModel {
                     if let token = jResult.token, !token.isEmpty {

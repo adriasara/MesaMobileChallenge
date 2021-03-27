@@ -6,6 +6,10 @@
   
 */
 
+// App
+
+"wait" = "Por favor, aguarde...";
+
 // LogIn
 
 "login" = "Log in";
