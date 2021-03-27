@@ -12,7 +12,7 @@ enum Server: RawRepresentable {
     
     static var urlBase = ("https://mesa-news-api.herokuapp.com/")
 
-    case signin, signup
+    case signin, signup, feed
     
     typealias RawValue = (url: String, method: HTTPMethod, encoding: URLEncoding)
     
@@ -26,12 +26,13 @@ enum Server: RawRepresentable {
             
         case .signin: return ("v1/client/auth/signin", .post, .queryString)
         case .signup: return ("v1/client/auth/signup", .post, .queryString)
+        case .feed: return ("/v1/client/news/highlights", .get, .queryString)
             
         }
     }
 }
 
-class Server_Response: Codable {
+final class Server_Response: Codable {
     
     var code: String?
     var mssg: String?
@@ -135,7 +136,7 @@ class ServerAPI {
         
         dataRequest = alamofireManager.request(url.isEmpty ? (Server.urlBase + operation.rawValue.url): url, method: operation.rawValue.method, parameters: p, encoding: urlEncoding, headers: headers).validate().responseJSON { (response) in
             
-            debugRequest(method: operation.rawValue.method.rawValue, url: url.isEmpty ? (Server.urlBase + operation.rawValue.url): url, jsonS: p.prettyPrint(), error: response.error.debugDescription, jsonR: response.response?.debugDescription ?? "")// result.debugDescription)
+            debugRequest(method: operation.rawValue.method.rawValue, url: url.isEmpty ? (Server.urlBase + operation.rawValue.url): url, jsonS: p.prettyPrint(), error: response.error?.localizedDescription, jsonR: response.response?.debugDescription ?? "")
             
             if response.response?.statusCode == 200 || response.response?.statusCode == 201 {
                 if let data = response.data, !data.isEmpty {

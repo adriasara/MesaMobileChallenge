@@ -1,25 +1,25 @@
 //
-//  RegisterViewModel.swift
+//  FeedViewModel.swift
 //  MesaNewsApp
 //
-//  Created by Ádria Cardoso on 23/03/21.
+//  Created by Ádria Cardoso on 27/03/21.
 //
 
 import UIKit
 
-final class RegisterViewModel: NSObject {
+final class FeedViewModel: NSObject {
     
-    private let model: RegisterModel
+    private let model: FeedModel
     private var viewController: UIViewController
     
-    init(model: RegisterModel = .init(), viewController: UIViewController) {
+    init(model: FeedModel = .init(), viewController: UIViewController) {
         self.model = model
         self.viewController = viewController
     }
     
-    func requestRegister(data: [String : Any], completion: ((_ object: Any) -> Void)?) {
+    func requestFeed(completion: ((_ object: Any) -> Void)?) {
         
-        self.service(controller: viewController, operation: .signup, parameters: data, type: RegisterModel.self) { (response) in
+        self.service(controller: viewController, operation: .feed, parameters: ["current_page" : "", "per_page" : "", "published_at" : ""], type: FeedModel.self) { (response) in
             
             if let error = response as? NSError {
                 completion?(error)

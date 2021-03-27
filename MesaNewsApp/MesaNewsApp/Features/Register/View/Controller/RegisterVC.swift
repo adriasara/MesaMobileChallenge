@@ -44,8 +44,8 @@ extension RegisterVC: RegisterDelegate {
             } else {
                 if let jResult = response as? RegisterModel {
                     if let token = jResult.token, !token.isEmpty {
-                        
-                        print("register")
+                        let feedVC = FeedVC()
+                        self.callStoryboard(vc: feedVC)
                     }
                 }
             }

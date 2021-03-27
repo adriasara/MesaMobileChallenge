@@ -104,4 +104,12 @@ extension UIViewController {
         
         presentSnackBar(text: text)
     }
+    
+    func callStoryboard(vc: UIViewController, transitionStyle: UIModalTransitionStyle = .coverVertical, presentationStyle: UIModalPresentationStyle = .overCurrentContext) {
+
+        vc.modalTransitionStyle = transitionStyle
+        vc.modalPresentationStyle = presentationStyle
+        
+        self.present(vc, animated: true, completion: nil)
+    }
 }

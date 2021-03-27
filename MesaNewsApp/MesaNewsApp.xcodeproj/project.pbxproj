@@ -26,6 +26,10 @@
 		2162A79F260AA9BB00EA4AE0 /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2162A79E260AA9BB00EA4AE0 /* RegisterModel.swift */; };
 		21C87216260FE6D800AD336D /* LoadBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C87215260FE6D800AD336D /* LoadBarVC.swift */; };
 		21C87274260FE9F600AD336D /* LoadBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C87273260FE9F600AD336D /* LoadBarView.swift */; };
+		21C8727B260FF17600AD336D /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C8727A260FF17600AD336D /* FeedView.swift */; };
+		21C8727E260FF1F500AD336D /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C8727D260FF1F500AD336D /* FeedVC.swift */; };
+		21C87281260FF5FD00AD336D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C87280260FF5FD00AD336D /* FeedViewModel.swift */; };
+		21C87289260FF68500AD336D /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C87288260FF68500AD336D /* FeedModel.swift */; };
 		BF086AB42AFF07095EE3532C /* Pods_MesaNewsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E611CED46A54089E0C681906 /* Pods_MesaNewsApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +57,10 @@
 		2162A79E260AA9BB00EA4AE0 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		21C87215260FE6D800AD336D /* LoadBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBarVC.swift; sourceTree = "<group>"; };
 		21C87273260FE9F600AD336D /* LoadBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadBarView.swift; sourceTree = "<group>"; };
+		21C8727A260FF17600AD336D /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		21C8727D260FF1F500AD336D /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		21C87280260FF5FD00AD336D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		21C87288260FF68500AD336D /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		22F37E0F34C48706CA7E06F1 /* Pods-MesaNewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MesaNewsApp.debug.xcconfig"; path = "Target Support Files/Pods-MesaNewsApp/Pods-MesaNewsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		3A7A65E2749E6D6AE3405CFD /* Pods-MesaNewsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MesaNewsApp.release.xcconfig"; path = "Target Support Files/Pods-MesaNewsApp/Pods-MesaNewsApp.release.xcconfig"; sourceTree = "<group>"; };
 		E611CED46A54089E0C681906 /* Pods_MesaNewsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MesaNewsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,7 +112,7 @@
 			children = (
 				2162A72D260A7F4000EA4AE0 /* Login */,
 				2162A72C260A7F3400EA4AE0 /* Register */,
-				2162A72B260A7F2700EA4AE0 /* News */,
+				2162A72B260A7F2700EA4AE0 /* Feed */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -118,11 +126,14 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
-		2162A72B260A7F2700EA4AE0 /* News */ = {
+		2162A72B260A7F2700EA4AE0 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				21C87285260FF66100AD336D /* Model */,
+				21C87278260FF15300AD336D /* View */,
+				21C87277260FF14D00AD336D /* Controller */,
 			);
-			path = News;
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		2162A72C260A7F3400EA4AE0 /* Register */ = {
@@ -299,6 +310,39 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		21C87277260FF14D00AD336D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				21C8727D260FF1F500AD336D /* FeedVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		21C87278260FF15300AD336D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				21C8727A260FF17600AD336D /* FeedView.swift */,
+				21C87279260FF15A00AD336D /* ViewModel */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		21C87279260FF15A00AD336D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				21C87280260FF5FD00AD336D /* FeedViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		21C87285260FF66100AD336D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				21C87288260FF68500AD336D /* FeedModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5473CCECF90B145CA166E63F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,17 +475,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21C8727E260FF1F500AD336D /* FeedVC.swift in Sources */,
 				2162A794260AA1F000EA4AE0 /* RegisterView.swift in Sources */,
 				2162A73E260A81BE00EA4AE0 /* LoginView.swift in Sources */,
 				2162A718260A7EA500EA4AE0 /* ViewController.swift in Sources */,
 				2162A770260A893400EA4AE0 /* StyleKit.swift in Sources */,
 				2162A714260A7EA500EA4AE0 /* AppDelegate.swift in Sources */,
 				2162A786260A955500EA4AE0 /* LoginModel.swift in Sources */,
+				21C87289260FF68500AD336D /* FeedModel.swift in Sources */,
 				2162A734260A809C00EA4AE0 /* Server.swift in Sources */,
 				2162A716260A7EA500EA4AE0 /* SceneDelegate.swift in Sources */,
 				21C87216260FE6D800AD336D /* LoadBarVC.swift in Sources */,
 				2162A79F260AA9BB00EA4AE0 /* RegisterModel.swift in Sources */,
 				2162A79C260AA21200EA4AE0 /* RegisterViewModel.swift in Sources */,
+				21C8727B260FF17600AD336D /* FeedView.swift in Sources */,
+				21C87281260FF5FD00AD336D /* FeedViewModel.swift in Sources */,
 				2162A73B260A816600EA4AE0 /* LoginVC.swift in Sources */,
 				21C87274260FE9F600AD336D /* LoadBarView.swift in Sources */,
 				2162A799260AA20100EA4AE0 /* RegisterVC.swift in Sources */,

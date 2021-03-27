@@ -44,8 +44,8 @@ extension LoginVC: LoginDelegate {
             } else {
                 if let jResult = response as? LoginModel {
                     if let token = jResult.token, !token.isEmpty {
-                        
-                        print("login")
+                        let feedVC = FeedVC()
+                        self.callStoryboard(vc: feedVC)
                     }
                 }
             }

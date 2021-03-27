@@ -23,9 +23,12 @@ final class LoginViewModel: NSObject {
             
             if let error = response as? NSError {
                 completion?(error)
-            } else if let server_response = response as? Error {
+                
+            } else if let server_response = response as? Server_Response {
                 completion?(server_response)
+                
             } else {
+                
                 completion?(response)
             }
         }
