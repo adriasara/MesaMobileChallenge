@@ -30,5 +30,6 @@ struct StyleKit {
         
         static let buttons = CGFloat(8.0)
         static let textFields = CGFloat(8.0)
+        static let views = CGFloat(24.0)
     }
 }

@@ -22,3 +22,8 @@
 "name" = "Name";
 "confirm_password" = "Confirm password";
 "register" = "Register";
+
+// Feed
+
+"favor" = "Favoritar";
+"disfavor" = "Desfavoritar";

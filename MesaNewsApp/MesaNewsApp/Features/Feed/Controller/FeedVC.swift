@@ -14,9 +14,6 @@ final class FeedVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.sv([feedView])
-        feedView.fillContainer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,10 +35,12 @@ final class FeedVC: UIViewController {
                     self.setSnackBarText(mssg)
                 }
             } else {
-                if let jResult = response as? FeedModel {
-                    jResult.data?.forEach({ (data) in
-                        print(data.author)
-                    })
+                if let jResult = response as? FeedModel, let data = jResult.data {
+                    
+                    self.view.sv([self.feedView])
+                    self.feedView.fillContainer()
+                    self.feedView.setModel(data)
+//                    print(data.count)
                 }
             }
         })

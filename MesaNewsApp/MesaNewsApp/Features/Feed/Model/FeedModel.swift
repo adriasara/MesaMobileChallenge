@@ -75,7 +75,7 @@ final class DataModel: Codable {
     private enum CodingKeys: String, CodingKey {
         
         case title
-        case descriptionHighlights
+        case descriptionHighlights = "description"
         case content
         case author
         case published_at

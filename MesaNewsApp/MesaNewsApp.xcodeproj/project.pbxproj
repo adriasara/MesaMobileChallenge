@@ -30,6 +30,9 @@
 		21C8727E260FF1F500AD336D /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C8727D260FF1F500AD336D /* FeedVC.swift */; };
 		21C87281260FF5FD00AD336D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C87280260FF5FD00AD336D /* FeedViewModel.swift */; };
 		21C87289260FF68500AD336D /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C87288260FF68500AD336D /* FeedModel.swift */; };
+		21FD242D26102CB5000A9A1D /* CarousselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FD242C26102CB5000A9A1D /* CarousselView.swift */; };
+		21FD243726103092000A9A1D /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FD243626103092000A9A1D /* iCarousel.m */; };
+		21FD243B2610320A000A9A1D /* FeedViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FD243A2610320A000A9A1D /* FeedViewDelegate.swift */; };
 		BF086AB42AFF07095EE3532C /* Pods_MesaNewsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E611CED46A54089E0C681906 /* Pods_MesaNewsApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +64,11 @@
 		21C8727D260FF1F500AD336D /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		21C87280260FF5FD00AD336D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		21C87288260FF68500AD336D /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		21FD242C26102CB5000A9A1D /* CarousselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarousselView.swift; sourceTree = "<group>"; };
+		21FD243426103091000A9A1D /* MesaNewsApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MesaNewsApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		21FD243526103092000A9A1D /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		21FD243626103092000A9A1D /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		21FD243A2610320A000A9A1D /* FeedViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewDelegate.swift; sourceTree = "<group>"; };
 		22F37E0F34C48706CA7E06F1 /* Pods-MesaNewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MesaNewsApp.debug.xcconfig"; path = "Target Support Files/Pods-MesaNewsApp/Pods-MesaNewsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		3A7A65E2749E6D6AE3405CFD /* Pods-MesaNewsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MesaNewsApp.release.xcconfig"; path = "Target Support Files/Pods-MesaNewsApp/Pods-MesaNewsApp.release.xcconfig"; sourceTree = "<group>"; };
 		E611CED46A54089E0C681906 /* Pods_MesaNewsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MesaNewsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +192,7 @@
 		2162A731260A7FAC00EA4AE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				21FD24332610306D000A9A1D /* iCarousel */,
 				2162A71E260A7EA900EA4AE0 /* LaunchScreen.storyboard */,
 				2162A71C260A7EA900EA4AE0 /* Assets.xcassets */,
 				21C87214260FE6B600AD336D /* LoadBar */,
@@ -321,7 +330,9 @@
 		21C87278260FF15300AD336D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				21FD2439261031E5000A9A1D /* Delegates */,
 				21C8727A260FF17600AD336D /* FeedView.swift */,
+				21FD242C26102CB5000A9A1D /* CarousselView.swift */,
 				21C87279260FF15A00AD336D /* ViewModel */,
 			);
 			path = View;
@@ -341,6 +352,24 @@
 				21C87288260FF68500AD336D /* FeedModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		21FD24332610306D000A9A1D /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				21FD243526103092000A9A1D /* iCarousel.h */,
+				21FD243626103092000A9A1D /* iCarousel.m */,
+				21FD243426103091000A9A1D /* MesaNewsApp-Bridging-Header.h */,
+			);
+			path = iCarousel;
+			sourceTree = "<group>";
+		};
+		21FD2439261031E5000A9A1D /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				21FD243A2610320A000A9A1D /* FeedViewDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		5473CCECF90B145CA166E63F /* Pods */ = {
@@ -393,6 +422,7 @@
 				TargetAttributes = {
 					2162A70F260A7EA500EA4AE0 = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -483,12 +513,15 @@
 				2162A714260A7EA500EA4AE0 /* AppDelegate.swift in Sources */,
 				2162A786260A955500EA4AE0 /* LoginModel.swift in Sources */,
 				21C87289260FF68500AD336D /* FeedModel.swift in Sources */,
+				21FD243B2610320A000A9A1D /* FeedViewDelegate.swift in Sources */,
 				2162A734260A809C00EA4AE0 /* Server.swift in Sources */,
 				2162A716260A7EA500EA4AE0 /* SceneDelegate.swift in Sources */,
 				21C87216260FE6D800AD336D /* LoadBarVC.swift in Sources */,
+				21FD242D26102CB5000A9A1D /* CarousselView.swift in Sources */,
 				2162A79F260AA9BB00EA4AE0 /* RegisterModel.swift in Sources */,
 				2162A79C260AA21200EA4AE0 /* RegisterViewModel.swift in Sources */,
 				21C8727B260FF17600AD336D /* FeedView.swift in Sources */,
+				21FD243726103092000A9A1D /* iCarousel.m in Sources */,
 				21C87281260FF5FD00AD336D /* FeedViewModel.swift in Sources */,
 				2162A73B260A816600EA4AE0 /* LoginVC.swift in Sources */,
 				21C87274260FE9F600AD336D /* LoadBarView.swift in Sources */,
@@ -646,6 +679,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HNYWU9AGLA;
 				INFOPLIST_FILE = MesaNewsApp/Info.plist;
@@ -655,6 +689,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.MesaNewsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MesaNewsApp/Configs/View/iCarousel/MesaNewsApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -666,6 +702,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HNYWU9AGLA;
 				INFOPLIST_FILE = MesaNewsApp/Info.plist;
@@ -675,6 +712,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.apple.MesaNewsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MesaNewsApp/Configs/View/iCarousel/MesaNewsApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (5.2.2)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
   - MaterialComponents (113.0.0):
     - MaterialComponents/ActionSheet (= 113.0.0)
     - "MaterialComponents/ActionSheet+Theming (= 113.0.0)"
@@ -641,12 +643,14 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireImage (~> 4.1)
   - MaterialComponents
   - SteviaLayout
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - AlamofireImage
     - MaterialComponents
     - MDFInternationalization
     - MDFTextAccessibility
@@ -656,6 +660,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   MaterialComponents: ba353ae0de17eb7baabbae96ca922783ee87738f
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   MDFTextAccessibility: 85c09a1bd9c321f494348e632a25063bcda35a53
@@ -663,6 +668,6 @@ SPEC CHECKSUMS:
   MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
 
-PODFILE CHECKSUM: 521bc01c747cd35413ca6d4d6cdaa6a7e7fc9039
+PODFILE CHECKSUM: cc88ed303f7a03d355e3677158a952fc005a6cc6
 
 COCOAPODS: 1.10.1
