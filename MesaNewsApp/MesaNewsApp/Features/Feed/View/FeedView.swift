@@ -10,6 +10,16 @@ import Stevia
 
 final class FeedView: UIView {
     
+    private lazy var title: UILabel = {
+        let title = UILabel(frame: .zero)
+        title.font = StyleKit.fonts.boldLargeText
+        title.textColor = StyleKit.colors.black
+        title.textAlignment = .center
+        title.numberOfLines = 2
+        title.text = "Feed"
+        return title
+    }()
+    
     private lazy var carousselView: iCarousel = {
         let carousselView = iCarousel(frame: .zero)
         carousselView.type = .coverFlow
@@ -18,14 +28,8 @@ final class FeedView: UIView {
         return carousselView
     }()
     
-    lazy var feedCarousselView: CarousselView = {
-        let feedCarousselView = CarousselView(frame: CGRect(x: 0, y: 0, width: frame.width * 0.85, height: frame.height * 0.85))
-        feedCarousselView.backgroundColor = .white
-        feedCarousselView.layer.cornerRadius = StyleKit.borders.views
-        feedCarousselView.layer.shadowRadius = 3.0
-        feedCarousselView.layer.shadowColor = #colorLiteral(red: 0.7745774388, green: 0.7944802642, blue: 0.7939844728, alpha: 1)
-        feedCarousselView.layer.shadowOpacity = 1.0
-        feedCarousselView.layer.shadowOffset = CGSize(width: 0, height: 3)
+    private lazy var feedCarousselView: CarousselView = {
+        let feedCarousselView = CarousselView(frame: .zero)
         return feedCarousselView
     }()
     
@@ -39,21 +43,24 @@ final class FeedView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = .yellow
+        backgroundColor = .lightGray
         carousselView.delegate = self
         carousselView.dataSource = self
+        carousselView.reloadData()
         subviews()
         layout()
     }
     
     private func subviews() {
         
-        sv([carousselView])
+        sv([title, carousselView])
     }
     
     private func layout() {
         
-        carousselView.width(85%).height(85%).centerHorizontally().top(30)
+        title.centerHorizontally().top(8%).left(10).right(10)
+        
+        carousselView.width(85%).height(50%).centerHorizontally().Top == title.Bottom + 20
     }
     
     var modelData = [DataModel]()

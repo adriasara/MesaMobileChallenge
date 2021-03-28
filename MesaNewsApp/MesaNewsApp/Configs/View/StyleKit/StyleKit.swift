@@ -15,7 +15,8 @@ struct StyleKit {
         static let normalText = UIFont(name: "Arial-Regular", size: 12.0)
         static let titleText = UIFont(name: "Arial-Regular", size: 14.0)
         
-        static let mediumText = UIFont(name: "Arial-Medium", size: 10.0)
+        static let boldText = UIFont(name: "Arial-BoldMT", size: 12.0)
+        static let boldLargeText = UIFont(name: "Arial-BoldMT", size: 20.0)
     }
     
     public struct colors {

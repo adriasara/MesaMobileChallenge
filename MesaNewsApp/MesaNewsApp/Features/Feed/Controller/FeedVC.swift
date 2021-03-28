@@ -20,6 +20,8 @@ final class FeedVC: UIViewController {
         super.viewWillAppear(animated)
         
         requestFeed()
+        
+        title = "Feed"
     }
     
     func requestFeed() {
@@ -39,8 +41,13 @@ final class FeedVC: UIViewController {
                     
                     self.view.sv([self.feedView])
                     self.feedView.fillContainer()
-                    self.feedView.setModel(data)
-//                    print(data.count)
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd MM, yyyy"
+                    
+                    let model = data.sorted(by: { dateFormatter.date(from:$0.published_at ?? "")?.compare(dateFormatter.date(from:$1.published_at ?? "") ?? Date()) == .orderedDescending })
+                    
+                    self.feedView.setModel(model)
                 }
             }
         })

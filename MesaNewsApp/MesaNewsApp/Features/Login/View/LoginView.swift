@@ -43,7 +43,7 @@ final class LoginView: UIView {
     private lazy var createAnAccountButton: UIButton = {
         let createAnAccountButton = UIButton(frame: .zero)
         createAnAccountButton.backgroundColor = .clear
-        createAnAccountButton.titleLabel?.font = StyleKit.fonts.mediumText
+        createAnAccountButton.titleLabel?.font = StyleKit.fonts.boldText
         createAnAccountButton.setTitleColor(.blue, for: .normal)
         createAnAccountButton.setTitle("create_account".localized(), for: .normal)
         return createAnAccountButton

@@ -18,9 +18,10 @@ extension FeedView: iCarouselDataSource {
     
     func carousel(_ carousel: iCarousel, viewForItemAt index: Int, reusing view: UIView?) -> UIView {
 
-        feedCarousselView.setModel(modelData[index])
+        let viewFeed = CarousselView(frame: CGRect(x: 0, y: 0, width: frame.width * 0.85, height: frame.height * 0.50))
+        viewFeed.setModel(modelData[index])
         
-        return feedCarousselView
+        return viewFeed
     }
 }
 

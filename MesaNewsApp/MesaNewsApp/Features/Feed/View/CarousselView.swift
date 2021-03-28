@@ -14,11 +14,10 @@ final class CarousselView: UIView {
     
     private lazy var title: UILabel = {
         let title = UILabel(frame: .zero)
-        title.font = StyleKit.fonts.mediumText
+        title.font = StyleKit.fonts.boldText
         title.textColor = StyleKit.colors.black
         title.textAlignment = .center
         title.numberOfLines = 2
-        title.text = "oi manaus"
         return title
     }()
     
@@ -29,11 +28,10 @@ final class CarousselView: UIView {
     
     private lazy var descriptionNews: UILabel = {
         let descriptionNews = UILabel(frame: .zero)
-        descriptionNews.font = StyleKit.fonts.normalText
+        descriptionNews.font = StyleKit.fonts.smallText
         descriptionNews.textColor = StyleKit.colors.black
         descriptionNews.textAlignment = .center
         descriptionNews.numberOfLines = 2
-        descriptionNews.text = "vain"
         return descriptionNews
     }()
     
@@ -56,7 +54,12 @@ final class CarousselView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = .green
+        backgroundColor = .white
+        layer.cornerRadius = StyleKit.borders.views
+        layer.shadowRadius = 3.0
+        layer.shadowColor = #colorLiteral(red: 0.7745774388, green: 0.7944802642, blue: 0.7939844728, alpha: 1)
+        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize(width: 0, height: 3)
         
         subviews()
         layout()
