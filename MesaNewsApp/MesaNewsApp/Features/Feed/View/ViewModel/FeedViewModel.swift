@@ -33,4 +33,25 @@ final class FeedViewModel: NSObject {
             }
         }
     }
+    
+    static var BookmarksUD: [DataModel]? {
+        get {
+
+            guard let data = UserDefaults.standard.object(forKey: "BookmarksUD") as? Data else {
+                return nil
+            }
+
+            return try? JSONDecoder().decode([DataModel].self, from: data)
+
+        } set {
+
+            if let data = newValue  {
+                UserDefaults.standard.set(try? JSONEncoder().encode(data), forKey: "BookmarksUD")
+
+            } else {
+
+                UserDefaults.standard.set(nil, forKey: "BookmarksUD")
+            }
+        }
+    }
 }

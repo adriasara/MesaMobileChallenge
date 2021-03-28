@@ -14,14 +14,13 @@ final class FeedVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         requestFeed()
-        
-        title = "Feed"
     }
     
     func requestFeed() {
@@ -46,7 +45,7 @@ final class FeedVC: UIViewController {
                     dateFormatter.dateFormat = "dd MM, yyyy"
                     
                     let model = data.sorted(by: { dateFormatter.date(from:$0.published_at ?? "")?.compare(dateFormatter.date(from:$1.published_at ?? "") ?? Date()) == .orderedDescending })
-                    
+                    FeedViewModel.BookmarksUD = model
                     self.feedView.setModel(model)
                 }
             }

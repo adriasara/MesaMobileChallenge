@@ -10,7 +10,13 @@ import Stevia
 import Alamofire
 import AlamofireImage
 
+protocol CarousselViewDelegate: NSObjectProtocol {
+    func bookmarksAction(button: UIButton)
+}
+
 final class CarousselView: UIView {
+    
+    weak var delegate: CarousselViewDelegate?
     
     private lazy var title: UILabel = {
         let title = UILabel(frame: .zero)
@@ -23,6 +29,7 @@ final class CarousselView: UIView {
     
     private lazy var imageURL: UIImageView = {
         let imageURL = UIImageView(frame: .zero)
+        imageURL.contentMode = .scaleToFill
         return imageURL
     }()
     
@@ -40,7 +47,6 @@ final class CarousselView: UIView {
         favouriteButton.backgroundColor = .clear
         favouriteButton.titleLabel?.font = StyleKit.fonts.normalText
         favouriteButton.setTitleColor(.blue, for: .normal)
-        favouriteButton.setTitle("favor".localized(), for: .normal)
         return favouriteButton
     }()
     
@@ -54,7 +60,7 @@ final class CarousselView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = .white
+        backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         layer.cornerRadius = StyleKit.borders.views
         layer.shadowRadius = 3.0
         layer.shadowColor = #colorLiteral(red: 0.7745774388, green: 0.7944802642, blue: 0.7939844728, alpha: 1)
@@ -77,13 +83,17 @@ final class CarousselView: UIView {
         
         imageURL.left(20).right(20).height(30%).Top == title.Bottom + 20
         
-        descriptionNews.left(10).right(10).Top == imageURL.Bottom + 20
+        descriptionNews.left(10).width(75%).Top == imageURL.Bottom + 15
 
-        favouriteButton.right(10).Top == descriptionNews.Bottom + 15
+        favouriteButton.width(20).heightEqualsWidth().right(15).Top == imageURL.Bottom + 20
     }
     
     private func addActions() {
-        
+        favouriteButton.addTarget(self, action: #selector(bookmarkAction), for: .touchUpInside)
+    }
+    
+    @objc private func bookmarkAction() {
+        delegate?.bookmarksAction(button: favouriteButton)
     }
     
     func setModel(_ model: DataModel) {
@@ -100,5 +110,21 @@ final class CarousselView: UIView {
             }
         }
         descriptionNews.text = model.descriptionHighlights
+        
+        if let highlight = model.highlight {
+            if highlight {
+                favouriteButton.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
+            } else {
+                favouriteButton.setImage(#imageLiteral(resourceName: "emptyHeart"), for: .normal)
+            }
+        }
+    }
+    
+    func setFavouriteButtonHidden(_ isHidden: Bool) {
+        favouriteButton.isHidden = isHidden
+    }
+    
+    func getFavButton() -> UIButton {
+        return favouriteButton
     }
 }

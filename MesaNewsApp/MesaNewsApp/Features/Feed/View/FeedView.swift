@@ -10,27 +10,45 @@ import Stevia
 
 final class FeedView: UIView {
     
-    private lazy var title: UILabel = {
-        let title = UILabel(frame: .zero)
-        title.font = StyleKit.fonts.boldLargeText
-        title.textColor = StyleKit.colors.black
-        title.textAlignment = .center
-        title.numberOfLines = 2
-        title.text = "Feed"
-        return title
+    var modelData = [DataModel]()
+    var currentIndex: Int = 0
+    
+    private lazy var titleNews: UILabel = {
+        let titleNews = UILabel(frame: .zero)
+        titleNews.font = StyleKit.fonts.boldMediumText
+        titleNews.textColor = StyleKit.colors.black
+        titleNews.textAlignment = .left
+        titleNews.numberOfLines = 2
+        titleNews.text = "news".localized()
+        return titleNews
     }()
     
-    private lazy var carousselView: iCarousel = {
-        let carousselView = iCarousel(frame: .zero)
-        carousselView.type = .coverFlow
-        carousselView.isScrollEnabled = true
-        carousselView.contentMode = .scaleAspectFill
-        return carousselView
+    private lazy var carousselFeedView: iCarousel = {
+        let carousselFeedView = iCarousel(frame: .zero)
+        carousselFeedView.type = .coverFlow
+        carousselFeedView.isScrollEnabled = true
+        carousselFeedView.tag = 1
+        carousselFeedView.contentMode = .scaleAspectFill
+        return carousselFeedView
     }()
     
-    private lazy var feedCarousselView: CarousselView = {
-        let feedCarousselView = CarousselView(frame: .zero)
-        return feedCarousselView
+    private lazy var carousselBookmarkView: iCarousel = {
+        let carousselBookmarkView = iCarousel(frame: .zero)
+        carousselBookmarkView.type = .coverFlow
+        carousselBookmarkView.isScrollEnabled = true
+        carousselBookmarkView.tag = 2
+        carousselBookmarkView.contentMode = .scaleAspectFill
+        return carousselBookmarkView
+    }()
+    
+    private lazy var titleBookmarks: UILabel = {
+        let titleBookmarks = UILabel(frame: .zero)
+        titleBookmarks.font = StyleKit.fonts.boldMediumText
+        titleBookmarks.textColor = StyleKit.colors.black
+        titleBookmarks.textAlignment = .left
+        titleBookmarks.numberOfLines = 2
+        titleBookmarks.text = "bookmarks".localized()
+        return titleBookmarks
     }()
     
     override init(frame: CGRect) {
@@ -43,30 +61,50 @@ final class FeedView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = .lightGray
-        carousselView.delegate = self
-        carousselView.dataSource = self
-        carousselView.reloadData()
+        backgroundColor = .white
+        carousselFeedView.delegate = self
+        carousselFeedView.dataSource = self
+        carousselBookmarkView.delegate = self
+        carousselBookmarkView.dataSource = self
+        carousselFeedView.reloadData()
+        carousselBookmarkView.reloadData()
         subviews()
         layout()
     }
     
     private func subviews() {
         
-        sv([title, carousselView])
+        sv([titleNews, carousselFeedView, titleBookmarks, carousselBookmarkView])
     }
     
     private func layout() {
+                
+        titleNews.centerHorizontally().top(10%).left(15).right(10)
         
-        title.centerHorizontally().top(8%).left(10).right(10)
+        carousselFeedView.width(85%).height(200).centerHorizontally().Top == titleNews.Bottom + 15
         
-        carousselView.width(85%).height(50%).centerHorizontally().Top == title.Bottom + 20
+        titleBookmarks.left(15).right(10).Top == carousselFeedView.Bottom + 15
+        
+        carousselBookmarkView.width(85%).height(200).centerHorizontally().Top == titleBookmarks.Bottom + 15
     }
-    
-    var modelData = [DataModel]()
     
     func setModel(_ model: [DataModel]) {
         modelData = model
-        carousselView.reloadData()
+        carousselFeedView.reloadData()
+    }
+}
+
+extension FeedView: CarousselViewDelegate {
+    
+    func bookmarksAction(button: UIButton) {
+            
+        if button.imageView?.image == #imageLiteral(resourceName: "heart") {
+            button.setImage(#imageLiteral(resourceName: "emptyHeart"), for: .normal)
+//            FeedViewModel.BookmarksUD?.remove(at: currentIndex)
+        } else if button.imageView?.image == #imageLiteral(resourceName: "emptyHeart") {
+            button.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
+//            FeedViewModel.BookmarksUD?.append(modelData[currentIndex])
+        }
+        carousselBookmarkView.reloadData()
     }
 }
