@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let window = window {
 
-             let vc = LoginVC()
+             let vc = FeedVC()//LoginVC()
 
              window.rootViewController = UINavigationController(rootViewController: vc)
              window.makeKeyAndVisible()

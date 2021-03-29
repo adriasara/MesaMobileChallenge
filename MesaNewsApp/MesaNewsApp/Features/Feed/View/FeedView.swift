@@ -100,10 +100,10 @@ extension FeedView: CarousselViewDelegate {
             
         if button.imageView?.image == #imageLiteral(resourceName: "heart") {
             button.setImage(#imageLiteral(resourceName: "emptyHeart"), for: .normal)
-//            FeedViewModel.BookmarksUD?.remove(at: currentIndex)
+            FeedViewModel.BookmarksUD?.removeAll(where: { $0.title == modelData[currentIndex].title})
         } else if button.imageView?.image == #imageLiteral(resourceName: "emptyHeart") {
             button.setImage(#imageLiteral(resourceName: "heart"), for: .normal)
-//            FeedViewModel.BookmarksUD?.append(modelData[currentIndex])
+            FeedViewModel.BookmarksUD?.append(modelData[currentIndex])
         }
         carousselBookmarkView.reloadData()
     }

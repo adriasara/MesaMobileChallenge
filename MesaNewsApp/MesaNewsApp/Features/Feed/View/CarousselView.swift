@@ -18,6 +18,8 @@ final class CarousselView: UIView {
     
     weak var delegate: CarousselViewDelegate?
     
+    var currentIndex: Int = 0
+    
     private lazy var title: UILabel = {
         let title = UILabel(frame: .zero)
         title.font = StyleKit.fonts.boldText
@@ -47,6 +49,7 @@ final class CarousselView: UIView {
         favouriteButton.backgroundColor = .clear
         favouriteButton.titleLabel?.font = StyleKit.fonts.normalText
         favouriteButton.setTitleColor(.blue, for: .normal)
+        favouriteButton.setImage(#imageLiteral(resourceName: "emptyHeart"), for: .normal)
         return favouriteButton
     }()
     

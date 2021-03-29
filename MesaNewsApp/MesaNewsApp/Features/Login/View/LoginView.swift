@@ -31,12 +31,11 @@ final class LoginView: UIView {
     private lazy var passwordTextField: MDCTextField = {
         let passwordTextField = MDCTextField(frame: .zero)
         passwordTextField.placeholder = "password".localized()
-        passwordTextField.keyboardType = .emailAddress
         passwordTextField.autocapitalizationType = .none
         passwordTextField.returnKeyType = .done
-        passwordTextField.trailingViewMode = .always
         passwordTextField.isSecureTextEntry = true
         passwordTextField.delegate = self
+        passwordTextField.textContentType = .oneTimeCode
         return passwordTextField
     }()
     

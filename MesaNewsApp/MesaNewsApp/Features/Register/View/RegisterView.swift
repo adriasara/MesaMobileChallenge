@@ -42,6 +42,7 @@ final class RegisterView: UIView {
         passwordTextField.autocapitalizationType = .none
         passwordTextField.returnKeyType = .next
         passwordTextField.trailingViewMode = .always
+        passwordTextField.textContentType = .oneTimeCode
         passwordTextField.isSecureTextEntry = true
         passwordTextField.delegate = self
         return passwordTextField
@@ -53,6 +54,7 @@ final class RegisterView: UIView {
         confirmPasswordTextField.autocapitalizationType = .none
         confirmPasswordTextField.returnKeyType = .done
         confirmPasswordTextField.trailingViewMode = .always
+        confirmPasswordTextField.textContentType = .oneTimeCode
         confirmPasswordTextField.isSecureTextEntry = true
         confirmPasswordTextField.delegate = self
         return confirmPasswordTextField

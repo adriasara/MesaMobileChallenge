@@ -25,6 +25,8 @@ final class FeedVC: UIViewController {
     
     func requestFeed() {
         
+        FeedViewModel.BookmarksUD = nil
+        
         viewModelFeed = FeedViewModel(model: .init(), viewController: self)
         
         viewModelFeed?.requestFeed(completion: { (response) in
@@ -45,7 +47,10 @@ final class FeedVC: UIViewController {
                     dateFormatter.dateFormat = "dd MM, yyyy"
                     
                     let model = data.sorted(by: { dateFormatter.date(from:$0.published_at ?? "")?.compare(dateFormatter.date(from:$1.published_at ?? "") ?? Date()) == .orderedDescending })
-                    FeedViewModel.BookmarksUD = model
+                    
+                    if FeedViewModel.BookmarksUD == nil {
+                        FeedViewModel.BookmarksUD = model
+                    }
                     self.feedView.setModel(model)
                 }
             }

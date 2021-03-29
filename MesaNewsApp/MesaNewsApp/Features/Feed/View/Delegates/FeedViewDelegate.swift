@@ -26,6 +26,7 @@ extension FeedView: iCarouselDataSource {
             
             let viewFeed = CarousselView(frame: CGRect(x: 0, y: 0, width: frame.width * 0.85, height: 200))
             viewFeed.delegate = self
+            viewFeed.currentIndex = index
             viewFeed.setFavouriteButtonHidden(false)
             viewFeed.setModel(modelData[index])
             
