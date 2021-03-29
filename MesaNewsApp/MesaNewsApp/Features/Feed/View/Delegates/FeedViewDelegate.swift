@@ -55,9 +55,6 @@ extension FeedView: iCarouselDelegate {
     func carouselDidEndScrollingAnimation(_ carousel: iCarousel) {
         if carousel.tag == 1 {
             currentIndex = carousel.currentItemIndex
-            print(carousel.currentItemIndex)
-        } else if carousel.tag == 2 {
-            print(carousel.currentItemIndex)
         }
     }
 }

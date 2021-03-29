@@ -10,6 +10,5 @@ target 'MesaNewsApp' do
   pod 'Alamofire'
   pod 'MaterialComponents'
   pod 'SteviaLayout'
-  pod 'AlamofireImage', '~> 4.1'
 
 end

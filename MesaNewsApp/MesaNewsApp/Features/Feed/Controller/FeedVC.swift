@@ -12,15 +12,42 @@ final class FeedVC: UIViewController {
     let feedView: FeedView = FeedView(frame: .zero)
     var viewModelFeed: FeedViewModel?
     
+    var timer = Timer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        startTimer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         requestFeed()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        stopTimer()
+    }
+    
+    // MARK: - Update News in 30 seconds
+    
+    func startTimer() {
+        
+        timer = Timer.scheduledTimer(timeInterval: 30.0, target: self, selector: #selector(doRequisitions), userInfo: nil, repeats: true)
+    }
+    
+    @objc func doRequisitions() {
+        
+        requestFeed()
+    }
+    
+    func stopTimer() {
+        
+        timer.invalidate()
+        timer = Timer()
     }
     
     func requestFeed() {

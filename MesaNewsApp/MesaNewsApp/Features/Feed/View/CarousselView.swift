@@ -8,7 +8,6 @@
 import UIKit
 import Stevia
 import Alamofire
-import AlamofireImage
 
 protocol CarousselViewDelegate: NSObjectProtocol {
     func bookmarksAction(button: UIButton)
