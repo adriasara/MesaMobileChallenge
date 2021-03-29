@@ -23,3 +23,7 @@ The project was organized by the MVVM (Model-View-ViewModel) design pattern.
 ### Another libs
 
 + iCarousel.
+
+### Icons
+
+The bookmark button icons have been saved from FlatIcon (https://www.flaticon.com/).
