@@ -23,6 +23,7 @@ final class RegisterView: UIView {
         nameTextField.autocapitalizationType = .words
         nameTextField.returnKeyType = .next
         nameTextField.delegate = self
+        nameTextField.tag = 1
         return nameTextField
     }()
     
@@ -33,6 +34,7 @@ final class RegisterView: UIView {
         emailTextField.autocapitalizationType = .none
         emailTextField.returnKeyType = .next
         emailTextField.delegate = self
+        emailTextField.tag = 2
         return emailTextField
     }()
     
@@ -45,6 +47,7 @@ final class RegisterView: UIView {
         passwordTextField.textContentType = .oneTimeCode
         passwordTextField.isSecureTextEntry = true
         passwordTextField.delegate = self
+        passwordTextField.tag = 3
         return passwordTextField
     }()
     
@@ -57,6 +60,7 @@ final class RegisterView: UIView {
         confirmPasswordTextField.textContentType = .oneTimeCode
         confirmPasswordTextField.isSecureTextEntry = true
         confirmPasswordTextField.delegate = self
+        confirmPasswordTextField.tag = 4
         return confirmPasswordTextField
     }()
     
@@ -148,12 +152,25 @@ final class RegisterView: UIView {
         
         return passwordTextField.text ?? ""
     }
-}
-
-extension RegisterView: UITextFieldDelegate {
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        endEditing(true);
+    func getConfirmPasswordText() -> String {
+        return confirmPasswordTextField.text ?? ""
+    }
+    
+    func emailBecomeFirstResponder() {
+        emailTextField.becomeFirstResponder()
+    }
+    
+    func passwordBecomeFirstResponder() {
+        passwordTextField.becomeFirstResponder()
+    }
+    
+    func confirmPasswordBecomeFirstResponder() {
+        confirmPasswordTextField.becomeFirstResponder()
+    }
+    
+    func confirmPasswordResignFirstResponder() {
+        confirmPasswordTextField.resignFirstResponder()
+        delegate?.register()
     }
 }

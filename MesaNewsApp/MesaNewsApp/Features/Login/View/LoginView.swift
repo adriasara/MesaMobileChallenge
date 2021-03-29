@@ -24,6 +24,7 @@ final class LoginView: UIView {
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
         emailTextField.returnKeyType = .next
+        emailTextField.tag = 1
         emailTextField.delegate = self
         return emailTextField
     }()
@@ -36,6 +37,7 @@ final class LoginView: UIView {
         passwordTextField.isSecureTextEntry = true
         passwordTextField.delegate = self
         passwordTextField.textContentType = .oneTimeCode
+        passwordTextField.tag = 2
         return passwordTextField
     }()
     
@@ -131,12 +133,13 @@ final class LoginView: UIView {
         
         return passwordTextField.text ?? ""
     }
-}
-
-extension LoginView: UITextFieldDelegate {
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        endEditing(true);
+    func passwordBecomeFirstResponder() {
+        passwordTextField.becomeFirstResponder()
+    }
+    
+    func passwordResignFirstResponder() {
+        passwordTextField.resignFirstResponder()
+        delegate?.login()
     }
 }

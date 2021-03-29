@@ -31,24 +31,34 @@ extension RegisterVC: RegisterDelegate {
     
     func register() {
         
-        viewModelRegister = RegisterViewModel(model: .init(), viewController: self)
+        let name = registerView.getNameText()
+        let email = registerView.getEmailText()
+        let password = registerView.getPasswordText()
+        let confirmPassword = registerView.getConfirmPasswordText()
         
-        viewModelRegister?.requestRegister(data: ["name" : registerView.getNameText(), "email" : registerView.getEmailText(), "password" : registerView.getPasswordText()], completion: { (response) in
+        if name.count > 0 && email.count > 0 && password.count > 0 && email.isValidEmail() && password == confirmPassword {
             
-            if let e = response as? NSError {
-                self.setSnackBarText(e.localizedDescription)
-            } else if let server_response = response as? Server_Response {
-                if let mssg = server_response.mssg {
-                    self.setSnackBarText(mssg)
-                }
-            } else {
-                if let jResult = response as? RegisterModel {
-                    if let token = jResult.token, !token.isEmpty {
-                        let feedVC = FeedVC()
-                        self.callStoryboard(vc: feedVC)
+            viewModelRegister = RegisterViewModel(model: .init(), viewController: self)
+            
+            viewModelRegister?.requestRegister(data: ["name" : name, "email" : email, "password" : password], completion: { (response) in
+                
+                if let e = response as? NSError {
+                    self.setSnackBarText(e.localizedDescription)
+                } else if let server_response = response as? Server_Response {
+                    if let mssg = server_response.mssg {
+                        self.setSnackBarText(mssg)
+                    }
+                } else {
+                    if let jResult = response as? RegisterModel {
+                        if let token = jResult.token, !token.isEmpty {
+                            let feedVC = FeedVC()
+                            self.callStoryboard(vc: feedVC)
+                        }
                     }
                 }
-            }
-        })
+            })
+        } else {
+            self.setSnackBarText("fill_fields".localized())
+        }
     }
 }

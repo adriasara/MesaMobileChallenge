@@ -30,6 +30,8 @@
 		21C8727E260FF1F500AD336D /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C8727D260FF1F500AD336D /* FeedVC.swift */; };
 		21C87281260FF5FD00AD336D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C87280260FF5FD00AD336D /* FeedViewModel.swift */; };
 		21C87289260FF68500AD336D /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C87288260FF68500AD336D /* FeedModel.swift */; };
+		21D549F92612912E00126F86 /* LoginViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D549F82612912E00126F86 /* LoginViewDelegate.swift */; };
+		21D549FE261292B600126F86 /* RegisterViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D549FD261292B600126F86 /* RegisterViewDelegate.swift */; };
 		21FD242D26102CB5000A9A1D /* CarousselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FD242C26102CB5000A9A1D /* CarousselView.swift */; };
 		21FD243726103092000A9A1D /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FD243626103092000A9A1D /* iCarousel.m */; };
 		21FD243B2610320A000A9A1D /* FeedViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FD243A2610320A000A9A1D /* FeedViewDelegate.swift */; };
@@ -64,6 +66,8 @@
 		21C8727D260FF1F500AD336D /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
 		21C87280260FF5FD00AD336D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		21C87288260FF68500AD336D /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		21D549F82612912E00126F86 /* LoginViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewDelegate.swift; sourceTree = "<group>"; };
+		21D549FD261292B600126F86 /* RegisterViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewDelegate.swift; sourceTree = "<group>"; };
 		21FD242C26102CB5000A9A1D /* CarousselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarousselView.swift; sourceTree = "<group>"; };
 		21FD243426103091000A9A1D /* MesaNewsApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MesaNewsApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		21FD243526103092000A9A1D /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				2162A73D260A81BE00EA4AE0 /* LoginView.swift */,
+				21D549F72612911500126F86 /* Delegates */,
 				2162A738260A813F00EA4AE0 /* ViewModel */,
 				2162A739260A814700EA4AE0 /* Controller */,
 			);
@@ -272,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				2162A793260AA1F000EA4AE0 /* RegisterView.swift */,
+				21D549FC261292A400126F86 /* Delegates */,
 				2162A791260AA1B800EA4AE0 /* ViewModel */,
 				2162A790260AA1B000EA4AE0 /* Controller */,
 			);
@@ -330,9 +336,9 @@
 		21C87278260FF15300AD336D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				21FD2439261031E5000A9A1D /* Delegates */,
 				21C8727A260FF17600AD336D /* FeedView.swift */,
 				21FD242C26102CB5000A9A1D /* CarousselView.swift */,
+				21FD2439261031E5000A9A1D /* Delegates */,
 				21C87279260FF15A00AD336D /* ViewModel */,
 			);
 			path = View;
@@ -352,6 +358,22 @@
 				21C87288260FF68500AD336D /* FeedModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		21D549F72612911500126F86 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				21D549F82612912E00126F86 /* LoginViewDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		21D549FC261292A400126F86 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				21D549FD261292B600126F86 /* RegisterViewDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		21FD24332610306D000A9A1D /* iCarousel */ = {
@@ -514,6 +536,7 @@
 				2162A786260A955500EA4AE0 /* LoginModel.swift in Sources */,
 				21C87289260FF68500AD336D /* FeedModel.swift in Sources */,
 				21FD243B2610320A000A9A1D /* FeedViewDelegate.swift in Sources */,
+				21D549F92612912E00126F86 /* LoginViewDelegate.swift in Sources */,
 				2162A734260A809C00EA4AE0 /* Server.swift in Sources */,
 				2162A716260A7EA500EA4AE0 /* SceneDelegate.swift in Sources */,
 				21C87216260FE6D800AD336D /* LoadBarVC.swift in Sources */,
@@ -522,6 +545,7 @@
 				2162A79C260AA21200EA4AE0 /* RegisterViewModel.swift in Sources */,
 				21C8727B260FF17600AD336D /* FeedView.swift in Sources */,
 				21FD243726103092000A9A1D /* iCarousel.m in Sources */,
+				21D549FE261292B600126F86 /* RegisterViewDelegate.swift in Sources */,
 				21C87281260FF5FD00AD336D /* FeedViewModel.swift in Sources */,
 				2162A73B260A816600EA4AE0 /* LoginVC.swift in Sources */,
 				21C87274260FE9F600AD336D /* LoadBarView.swift in Sources */,

@@ -22,6 +22,7 @@
 "name" = "Nome";
 "confirm_password" = "Confirmar senha";
 "register" = "Cadastrar";
+"fill_fields" = "Opa, preencha os campos corretamente.";
 
 // Feed
 

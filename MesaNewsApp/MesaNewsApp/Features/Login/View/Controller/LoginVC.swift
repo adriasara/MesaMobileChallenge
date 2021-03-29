@@ -31,25 +31,34 @@ extension LoginVC: LoginDelegate {
     
     func login() {
         
-        viewModelLogin = LoginViewModel(model: .init(), viewController: self)
+        let email = loginView.getEmailText()
+        let password = loginView.getPasswordText()
         
-        viewModelLogin?.requestAuthorization(email: loginView.getEmailText(), password: loginView.getPasswordText(), completion: { (response) in
+        if email.count > 0 && password.count > 0 && email.isValidEmail() {
             
-            if let e = response as? NSError {
-                self.setSnackBarText(e.localizedDescription)
-            } else if let server_response = response as? Server_Response {
-                if let mssg = server_response.mssg {
-                    self.setSnackBarText(mssg)
-                }
-            } else {
-                if let jResult = response as? LoginModel {
-                    if let token = jResult.token, !token.isEmpty {
-                        let feedVC = FeedVC()
-                        self.callStoryboard(vc: feedVC)
+            viewModelLogin = LoginViewModel(model: .init(), viewController: self)
+            
+            viewModelLogin?.requestAuthorization(email: email, password: password, completion: { (response) in
+                
+                if let e = response as? NSError {
+                    self.setSnackBarText(e.localizedDescription)
+                } else if let server_response = response as? Server_Response {
+                    if let mssg = server_response.mssg {
+                        self.setSnackBarText(mssg)
+                    }
+                } else {
+                    if let jResult = response as? LoginModel {
+                        if let token = jResult.token, !token.isEmpty {
+                            let feedVC = FeedVC()
+                            self.callStoryboard(vc: feedVC)
+                        }
                     }
                 }
-            }
-        })
+            })
+
+        } else {
+            self.setSnackBarText("fill_fields".localized())
+        }
     }
     
     func createAnAccount() {
